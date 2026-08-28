@@ -1,0 +1,20 @@
+name: Publish Posts to WordPress
+
+on:
+  push:
+    paths:
+      - 'posts/**'
+
+jobs:
+  wordpress-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Sync Markdown to WordPress
+        run: |
+          echo "Verarbeite neue Markdown-Dateien..."
+          # Hier wird die WP REST API getriggert
+          # Beispiel-Request an WP REST API:
+          # curl -X POST "${{ secrets.WP_URL }}" -H "Content-Type: application/json" --user "${{ secrets.WP_USER }}:${{ secrets.WP_APP_PASS }}" -d '...'
